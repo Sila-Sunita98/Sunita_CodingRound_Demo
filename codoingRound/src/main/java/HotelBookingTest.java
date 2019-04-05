@@ -27,6 +27,8 @@ public class HotelBookingTest {
     @Test
     public void shouldBeAbleToSearchForHotels() {
         setDriverPath();
+        
+        // ##Sunita## -- Used Page Factory as it has to click on its own Webelements inside the class.
         PageFactory.initElements(driver,this);
         driver.get("https://www.cleartrip.com/");
         
@@ -47,7 +49,9 @@ public class HotelBookingTest {
         }
         if (PlatformUtil.isWindows()) {
         	ChromeOptions options=new ChromeOptions();
+        	//#Sunita# --- Disable the notifications --- 
             options.addArguments("--disable-notifications");
+            options.addArguments("disable-infobars");
         	System.setProperty("webdriver.chrome.driver", "D:\\codingRound-master\\chromedriver.exe");
         	driver= new ChromeDriver(options);
         	driver.manage().window().maximize();

@@ -21,6 +21,7 @@ public class SignInTest {
         driver.findElement(By.linkText("Your trips")).click();
         
         driver.findElement(By.id("SignIn")).click();
+        //#Sunita# -- As SignIn page available inside Frame so it was not entering into the page window.So need to handle the Frame here---
         driver.switchTo().frame("modal_window");
 //        driver.findElement(By.xpath("(.//iframe[contains(@src,'https://www.cleartrip.com/signin?popup=yes&service=/')])[1]"));
 
@@ -45,8 +46,10 @@ public class SignInTest {
             System.setProperty("webdriver.chrome.driver", "chromedriver");
         }
         if (PlatformUtil.isWindows()) {
+        	//#Sunita# --- Disable the notifications --- 
         	ChromeOptions options=new ChromeOptions();
             options.addArguments("--disable-notifications");
+            options.addArguments("disable-infobars");
         	System.setProperty("webdriver.chrome.driver", "D:\\codingRound-master\\chromedriver.exe");
         	driver= new ChromeDriver(options);
         	driver.manage().window().maximize();

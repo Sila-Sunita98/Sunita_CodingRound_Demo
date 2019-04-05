@@ -46,6 +46,8 @@ public class FlightBookingTest {
         //wait for the auto complete options to appear for the destination
 
         waitFor(2000);
+        
+      //#Sunita# --- Can not able to get the element, so used Implicit wait --- 
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         
         //select the first item from the destination auto complete list
@@ -93,7 +95,10 @@ public class FlightBookingTest {
         }
         if (PlatformUtil.isWindows()) {
         	ChromeOptions options=new ChromeOptions();
+        	//#Sunita# --- Disable the notifications --- 
+        	//#Sunita# --- Setting Chrome Property to open up Chrome Browser --- 
             options.addArguments("--disable-notifications");
+            options.addArguments("disable-infobars");
         	System.setProperty("webdriver.chrome.driver", "D:\\codingRound-master\\chromedriver.exe");
         	driver= new ChromeDriver(options);
         	driver.manage().window().maximize();
